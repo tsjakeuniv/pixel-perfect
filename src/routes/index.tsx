@@ -57,6 +57,7 @@ function Index() {
       return () => clearTimeout(t);
     }
     a.pause();
+    return undefined;
   }, [track, playing]);
 
   return (
@@ -110,7 +111,7 @@ function Index() {
               value={[time]}
               max={duration || 30}
               step={0.1}
-              onValueChange={([v]) => {
+              onValueChange={([v = 0]) => {
                 if (audio.current) audio.current.currentTime = v;
                 setTime(v);
               }}
